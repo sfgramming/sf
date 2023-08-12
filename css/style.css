@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  margin: 0 auto;
+  width: 1652px;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+}
+
+#logo {
+  width: 100%;
+  height: 100%;
+}
+
+#slideShow {
+  clear: both;
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+  position: relative;
+}
+
+#slides {
+  position: absolute;
+}
+
+#slides > img {
+  width: 100%;
+  float: left;
+  width: 1650px;
+  height: 235px;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+
+#contents {
+  width: 100%;
+  height: 520px;
+}
+
+#tabMenu {
+  float: left;
+  width: 65%;
+  height: 100%;
+}
+
+#links {
+  float: right;
+  width: 35%;
+  height: 100%;
+  background-color: rgba(175, 175, 175, 0.192);
+}
+
+#links ul {
+  list-style: none;
+}
+
+#links ul li a > img {
+  margin-top: 42px;
+  margin-left: 40px;
+  width : 500px;
+  height: 200px;
+  border-radius: 30px;
+}
+
+footer {
+  width: 100%;
+  height: 70px;
+  border-top: 2px solid #22222270;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.calendar {
+  max-width: 650px;
+  min-height: 600px; /* 최소 높이를 지정합니다. */
+  padding-top: 30px ;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #d94139d0;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.prev, .next {
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 30px;
+  opacity: 0.5;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #d9413984;
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+.days {
+  background: #f0eeea;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  padding: 15px 0;
+  cursor: pointer;
+  font-size: 30px;
+  height: 300px;
+}
+.days div:not(:empty):hover {
+  color: #d94239; 
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background-color: rgba(249, 244, 244, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #f50c0c;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.pastDay {
+  color: lightgray;
+}
+
+.today {
+  background-color: #F5D042;            
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.futureDay {
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+.futureDay:hover{
+  background:#eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+  background: #0A174E;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#bottomMenu {
+  width: 100%;
+  height : 20px;
+  position: relative;
+}
+
+#bottomMenu ul {
+  list-style: none;
+}
+
+#bottomMenu ul li {
+  float : left;
+  padding : 2px 25px;
+  border-right: 1px solid #ddd;
+  margin-top: 25px;
+}
+
+#bottomMenu ul li:last-child {
+  border-right: none;
+}
+
+#bottomMenu ul li p {
+  font-size: 17px;
+  color : #020202;
+}
+
+#sns {
+  position: absolute;
+  right: 0;
+}
+
+#sns ul li {
+  border: none;
+  margin-top: 4px;
+  padding-bottom: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
