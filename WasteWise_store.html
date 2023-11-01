@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WasteWise_store</title>
+  <link rel="stylesheet" href="css/store.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+    @font-face {
+      font-family: "Yeongdeok-Sea";
+    
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/YeongdeokSea.woff2') format('woff2');
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <header>
+      <div id="logo" style="text-align: center;">
+        <a href="WasteWise.html"><img src="images/logo.png" alt="사이트 로고"
+          >
+        </a>
+      </div>
+    </header>
+    <div id="camera-container" style="background-color: #f0f0f0; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 80vh; position: relative;">
+      <div id="instruction" style="text-align: center; font-size: 30px; margin-bottom: 20px; position: absolute; top: 20px; left: 0; right: 0;">제품의 앞면을 카메라 가까이 대주세요.</div>
+      <div id="webcam-container"></div>
+      <div id="label-container" style="text-align: center; font-size: 25px; position: absolute; bottom: 20px; left: 0; right: 0;"></div>
+    </div>
+    
+    
+    <!-- 삭제: Start 버튼 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+      // More API functions here:
+      // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+      // the link to your model provided by Teachable Machine export panel
+      const URL = "./my_model/";
+
+      let model, webcam, maxPredictions;
+
+      // Load the image model and setup the webcam
+      async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(550, 550, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+      }
+
+      async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+      }
+
+
+      // run the webcam image through the image model
+      async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        let maxProbability = 0;
+        let predictedClass = "";
+
+        for (let i = 0; i < maxPredictions; i++) {
+          if (prediction[i].probability > maxProbability) {
+            maxProbability = prediction[i].probability;
+            predictedClass = prediction[i].className;
+          }
+        }
+
+        // Set the result in labelContainer
+        const labelContainer = document.getElementById("label-container");
+        if (maxProbability >= 0.95) {
+          if (predictedClass === "빠삐코") {
+            labelContainer.innerHTML = "<p>포장지: 비닐류</p>용기: 플라스틱류";
+          } else if (predictedClass === "콘칩") {
+            labelContainer.innerText = "비닐류";
+          } else if (predictedClass === "홈런볼") {
+            labelContainer.innerHTML = "<p>포장지: 비닐류</p>용기: 플라스틱류";
+          } else if (predictedClass === "피크닉") {
+            labelContainer.innerHTML = "<p>팩: 종이류</p>빨대: 일반쓰레기";
+          } else if (predictedClass === "포카리") {
+            labelContainer.innerHTML = "<p>용기: 플라스틱류</p>라벨: 비닐류";
+          }
+        } else {
+          labelContainer.innerText = "";
+        }
+      }
+
+      // Call the init() function when the page loads
+      init();
+    </script>
+
+  
+<footer>
+
+  <div id="bottomMenu">
+    <ul>
+      <li><p> 제작 : S.F. gramming ( 박선영, 이하영, 윤혜린, 최은교 ) </p></li>
+    </ul>
+
+<div id="sns">
+
+      <ul>
+
+        <li><a href ="https://www.instagram.com/wastewis_e/" target="_blank">
+        <img src="images/insta.png" alt="인스타 사이트"
+        ></a></li>
+
+        <li><a href="https://www.hanyang-u.hs.kr/" target="_blank">
+        <img src="images/hanyang.png" alt="한대부고 사이트" 
+        ></a></li>
+
+      </ul>
+    </div>
+  </div>
+  
+</footer>
+  </div>
+  <script src="js/slideshow.js"></script>
+</body>
+</html>
