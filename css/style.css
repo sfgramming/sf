@@ -156,7 +156,7 @@
     align-items: center;
     border-radius: 5px;
     font-size: 25px;
-    z-index: 1;
+    z-index: 5;
   }
 
   
@@ -165,7 +165,7 @@
     height: 100%;
     padding: 10px;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 12px;
     top : 50px;
     background: #d94139ab;
   }
@@ -404,6 +404,7 @@
     justify-content: center;
     align-items: center;
     background: none;
+    z-index: 5;
   }
   
   .popup-content {
@@ -411,7 +412,7 @@
     padding: 15px;
     border-radius: 5px;
     position: absolute;
-    font-size: 25px;
+    font-size: 17px;
     background: #d94139ab;
     left: 30px;
     bottom: 300px;
@@ -515,7 +516,7 @@
 }
 
 /* large devices*/
-@media screen and (min-width: 1023px) { 
+@media screen and (min-width: 1600px) { 
   * {
     margin: 0;
     padding: 0;
@@ -672,6 +673,7 @@ margin-top: 10px;
     justify-content: center;
     align-items: center;
     background: none;
+    z-index: 5;
   }
   
   .popup-content {
