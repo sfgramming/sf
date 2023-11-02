@@ -156,7 +156,6 @@
     align-items: center;
     border-radius: 5px;
     font-size: 25px;
-    z-index: 5;
   }
 
   
@@ -168,6 +167,7 @@
     font-size: 12px;
     top : 50px;
     background: #d94139ab;
+    z-index: 5;
   }
   
     .popup-image {
@@ -404,7 +404,6 @@
     justify-content: center;
     align-items: center;
     background: none;
-    z-index: 5;
   }
   
   .popup-content {
@@ -412,10 +411,11 @@
     padding: 15px;
     border-radius: 5px;
     position: absolute;
-    font-size: 17px;
+    font-size: 15px;
     background: #d94139ab;
     left: 30px;
     bottom: 300px;
+    z-index: 5;
   }
   
   .popup-image {
@@ -666,14 +666,13 @@ margin-top: 10px;
     position: absolute;
     top:0;
     left: 40px;
-    width: 350px;
+    width: 400px;
     height: 330px;
     margin-bottom: 0;
     margin-left: 0;
     justify-content: center;
     align-items: center;
     background: none;
-    z-index: 5;
   }
   
   .popup-content {
@@ -685,6 +684,7 @@ margin-top: 10px;
     background: #d94139ab;
     left: 30px;
     bottom: 300px;
+    z-index: 5;
   }
   
   .popup-image {
